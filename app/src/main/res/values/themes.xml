@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.NeWorkNetology" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="textInputStyle">@style/GlobalTextInputStyle</item>
+    </style>
+
+    <style name="LoginButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minWidth">@dimen/minWidthComponents</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="RemoveButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minWidth">@dimen/minWidthComponentsRemove</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CreateAccountButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minWidth">@dimen/minWidthComponents</item>
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+    <style name="GlobalTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:minWidth">@dimen/minWidthComponents</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Widget.AppTheme.ShareButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.AppTheme.SubscribeButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.AppTheme.LikeButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconPadding">0dp</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+    </style>
+
+    <style name="Widget.AppTheme.PlayButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/middle_padding">
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/grey_400"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Наименование компании" />
+
+    <TextView
+        android:id="@+id/timeWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/middle_padding"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/grey_400"
+        android:textSize="16sp"
+        tools:text="1 февраля 2024 г. - по НВ" />
+
+    <TextView
+        android:id="@+id/speciality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/middle_padding"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/grey_400"
+        android:textSize="18sp"
+        tools:text="Android developer" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/middle_padding"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/grey_400"
+        android:textSize="12sp"
+        tools:text="Link" />
+
+</LinearLayout>

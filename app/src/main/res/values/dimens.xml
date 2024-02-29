@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="short_padding">8dp</dimen>
+    <dimen name="middle_padding">16dp</dimen>
+    <dimen name="long_padding">32dp</dimen>
+    <dimen name="minWidthComponents">260dp</dimen>
+    <dimen name="minWidthComponentsRemove">150dp</dimen>
+    <dimen name="cornerRadiusForButton">22dp</dimen>
+    <dimen name="avatarSignUp">160dp</dimen>
+    <dimen name="avatarPostCard">48dp</dimen>
+    <dimen name="icon_padding">8dp</dimen>
+    <dimen name="icon_button_min_size">48dp</dimen>
+    <dimen name="create_new_text_size">20sp</dimen>
+</resources>
