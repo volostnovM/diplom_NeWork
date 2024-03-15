@@ -45,6 +45,15 @@
         <action
             android:id="@+id/action_tabsFragment_to_createEventFragment"
             app:destination="@id/createEventFragment" />
+        <action
+            android:id="@+id/action_tabsFragment_to_editEventFragment"
+            app:destination="@id/editEventFragment" />
+        <action
+            android:id="@+id/action_tabsFragment_to_imageFragment"
+            app:destination="@id/imageFragment" />
+        <action
+            android:id="@+id/action_tabsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPostFragment"
@@ -53,9 +62,44 @@
     <fragment
         android:id="@+id/userInfoFragment"
         android:name="ru.netology.neworknetology.screens.main.userInfo.UserInfoFragment"
-        android:label="UserInfoFragment" />
+        android:label="You" >
+        <action
+            android:id="@+id/action_userInfoFragment_to_createJobFragment"
+            app:destination="@id/createJobFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createEventFragment"
         android:name="ru.netology.neworknetology.screens.main.tabs.events.createEvent.CreateEventFragment"
         android:label="CreateEventFragment" />
+    <fragment
+        android:id="@+id/editEventFragment"
+        android:name="ru.netology.neworknetology.screens.main.tabs.events.editEvent.EditEventFragment"
+        android:label="EditEventFragment" >
+        <argument
+            android:name="currentEvent"
+            app:argType="ru.netology.neworknetology.dto.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="ru.netology.neworknetology.screens.main.image.ImageFragment"
+        android:label="ImageFragment" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="ru.netology.neworknetology.screens.main.tabs.posts.editPost.EditPostFragment"
+        android:label="fragment_edit_post"
+        tools:layout="@layout/fragment_edit_post" >
+        <argument
+            android:name="currentPost"
+            app:argType="ru.netology.neworknetology.dto.Post" />
+    </fragment>
+    <fragment
+        android:id="@+id/createJobFragment"
+        android:name="ru.netology.neworknetology.screens.main.userInfo.job.createJob.CreateJobFragment"
+        android:label="fragment_new_job"
+        tools:layout="@layout/fragment_new_job" />
 </navigation>

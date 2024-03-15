@@ -1,7 +1,9 @@
 package ru.netology.neworknetology.dto
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import ru.netology.neworknetology.model.enums.EventType
-
+@Parcelize
 data class Event (
     val id: Int,
     val authorId: Int,
@@ -20,4 +22,5 @@ data class Event (
     val participatedByMe: Boolean = false,
     val attachment: Attachment? = null,
     val link: String? = null,
-)
+    val ownedByMe: Boolean = false,
+): Parcelable

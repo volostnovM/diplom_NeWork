@@ -1,11 +1,11 @@
 package ru.netology.neworknetology.screens.main.tabs
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.neworknetology.R
 import ru.netology.neworknetology.databinding.FragmentTabsBinding
+import ru.netology.neworknetology.screens.main.userInfo.UserInfoFragment
 import ru.netology.neworknetology.utils.findTopNavController
 
 @AndroidEntryPoint
@@ -40,7 +41,8 @@ class TabsFragment : Fragment(R.layout.fragment_tabs) {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean =
                 when (menuItem.itemId) {
                     R.id.userInfoMenu -> {
-                        findTopNavController().navigate(R.id.userInfoFragment)
+                        arguments = bundleOf(UserInfoFragment.USER_INFO to null)
+                        findTopNavController().navigate(R.id.userInfoFragment, arguments)
                         true
                     }
 

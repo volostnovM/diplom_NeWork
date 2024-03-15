@@ -1,14 +1,16 @@
 package ru.netology.neworknetology.utils
 
-import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.squareup.moshi.Moshi
 import ru.netology.neworknetology.dto.Coordinates
 import ru.netology.neworknetology.model.enums.AttachmentType
-import javax.inject.Inject
 
-class Converters() {
-    val moshi: Moshi = Moshi.Builder().build()
+object Converters {
+    private lateinit var moshi: Moshi
+
+    fun initialize(moshi: Moshi){
+        this.moshi = moshi
+    }
 
     @TypeConverter
     fun toAttachmentType(value: String) = enumValueOf<AttachmentType>(value)

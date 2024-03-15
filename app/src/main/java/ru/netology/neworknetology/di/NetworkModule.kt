@@ -14,7 +14,10 @@ import retrofit2.create
 import ru.netology.neworknetology.Const
 import ru.netology.neworknetology.api.AuthApiService
 import ru.netology.neworknetology.api.EventApiService
+import ru.netology.neworknetology.api.JobApiService
+import ru.netology.neworknetology.api.PostApiService
 import ru.netology.neworknetology.model.setting.AppSettings
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -29,6 +32,15 @@ class NetworkModule{
     @Singleton
     fun provideEventApiService(retrofit: Retrofit): EventApiService = retrofit.create()
 
+    @Provides
+    @Singleton
+    fun provideJobApiService(retrofit: Retrofit): JobApiService = retrofit.create()
+
+    @Provides
+    @Singleton
+    fun providePostApiService(retrofit: Retrofit): PostApiService = retrofit.create()
+
+
 
     @Provides
     @Singleton
@@ -40,6 +52,7 @@ class NetworkModule{
     @Singleton
     fun provideClient(settings: AppSettings): OkHttpClient {
         return OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(createAuthorizationInterceptor(settings))
             .addInterceptor(createLoggingInterceptor())
             .build()

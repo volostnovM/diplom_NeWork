@@ -1,7 +1,7 @@
 package ru.netology.neworknetology.screens.main.tabs.events
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +18,7 @@ import ru.netology.neworknetology.R
 import ru.netology.neworknetology.databinding.FragmentEventsBinding
 import ru.netology.neworknetology.dto.Event
 import ru.netology.neworknetology.model.OnInteractionListener
+import ru.netology.neworknetology.screens.main.tabs.TabsFragmentDirections
 import ru.netology.neworknetology.utils.findTopNavController
 import ru.netology.neworknetology.utils.observeEvent
 
@@ -46,7 +47,30 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
             }
 
             override fun onEventEdit(event: Event) {
-                TODO("Not yet implemented")
+                val direction = TabsFragmentDirections.actionTabsFragmentToEditEventFragment(event)
+                findTopNavController().navigate(direction)
+            }
+
+            override fun onEventTakePart(event: Event) {
+                viewModel.takePartById(event)
+            }
+
+            override fun onEventShare(event: Event) {
+                val intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, event.content)
+                    type = "text/plain"
+                }
+                val shareIntent =
+                    Intent.createChooser(intent, getString(R.string.chooser_share_post))
+                startActivity(shareIntent)
+            }
+
+            override fun onImageClickEvent(event: Event) {
+                event.attachment?.url.let {
+                    val direction = TabsFragmentDirections.actionTabsFragmentToImageFragment(it)
+                    findTopNavController().navigate(direction)
+                }
             }
         })
 

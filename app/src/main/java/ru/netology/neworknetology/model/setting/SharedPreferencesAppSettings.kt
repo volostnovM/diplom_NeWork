@@ -25,7 +25,28 @@ class SharedPreferencesAppSettings @Inject constructor(
         editor.apply()
     }
 
+    override fun getCurrentIdForUser(): Int {
+        return sharedPreferences.getInt(PREF_CURRENT_USER_ID, 0)
+    }
+
+    override fun setCurrentIdForUser(id: Int) {
+        val editor = sharedPreferences.edit()
+        if (id == 0)
+            editor.remove(PREF_CURRENT_USER_ID)
+        else
+            editor.putInt(PREF_CURRENT_USER_ID, id)
+        editor.apply()
+    }
+
+    override fun clearAllSetting() {
+        val editor = sharedPreferences.edit()
+        editor.remove(PREF_CURRENT_USER_ID)
+        editor.remove(PREF_CURRENT_ACCOUNT_TOKEN)
+        editor.apply()
+    }
+
     companion object {
         private const val PREF_CURRENT_ACCOUNT_TOKEN = "currentToken"
+        private const val PREF_CURRENT_USER_ID = "userId"
     }
 }

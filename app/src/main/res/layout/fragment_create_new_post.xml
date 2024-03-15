@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".screens.main.tabs.posts.createPost.CreatePostFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/buttonPanel"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/itemContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="@dimen/short_padding">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:gravity="top"
+                android:hint="@string/whats_is_event"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black"
+                android:textSize="@dimen/create_new_text_size"
+                tools:text="@tools:sample/lorem[25]" />
+
+            <FrameLayout
+                android:id="@+id/photo_preview_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/photo_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/photo_preview_description"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/remove_photo"
+                    style="@style/RemoveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/remove"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/primaryColor"
+                    app:cornerRadius="@dimen/cornerRadiusForButton"
+                    tools:visibility="visible" />
+
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/bottom_panel_color"
+        android:clickable="true"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/add_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/middle_padding"
+                android:contentDescription="@string/take_a_photo_description"
+                android:padding="@dimen/icon_padding"
+                android:src="@drawable/ic_photo_camera_24" />
+
+            <ImageView
+                android:id="@+id/add_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/middle_padding"
+                android:contentDescription="@string/pick_a_photo_from_gallery_description"
+                android:padding="@dimen/icon_padding"
+                android:src="@drawable/ic_attach_file_24" />
+
+            <ImageView
+                android:id="@+id/add_participater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/middle_padding"
+                android:contentDescription="@string/add_participater"
+                android:padding="@dimen/icon_padding"
+                android:src="@drawable/ic_supervisor_account_24" />
+
+            <ImageView
+                android:id="@+id/add_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/middle_padding"
+                android:contentDescription="@string/add_location"
+                android:padding="@dimen/icon_padding"
+                android:src="@drawable/ic_location_on_24" />
+
+        </LinearLayout>
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

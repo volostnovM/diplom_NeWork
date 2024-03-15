@@ -82,6 +82,20 @@ class EventViewHolder(
                 onInteractionListener.onEventLike(event)
             }
 
+            imageAttachment.setOnClickListener {
+                onInteractionListener.onImageClickEvent(event)
+            }
+
+            shareButton.setOnClickListener {
+                onInteractionListener.onEventShare(event)
+            }
+
+            subscribeButton.setOnClickListener {
+                onInteractionListener.onEventTakePart(event)
+            }
+
+            menu.isVisible = event.ownedByMe
+
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_event)

@@ -1,7 +1,5 @@
 package ru.netology.neworknetology.utils
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.time.LocalDateTime

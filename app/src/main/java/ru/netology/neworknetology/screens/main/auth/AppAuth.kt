@@ -25,16 +25,11 @@ class AppAuth @Inject constructor(
             val response = networkManager.authenticationUser(login, pass)
 
             if (!response.isSuccessful) {
-                Log.d("currentToken", "message = ${response.message()} errorBody = ${response.errorBody().toString()} " +
-                        "headers = ${response.headers()}  raw = ${response.raw()} code = ${response.code()}")
-//                val errorAdapter = moshi.adapter(ErrorSend::class.java)
-//                val errorBody: ErrorSend = errorAdapter.fromJson(
-//                    response.errorBody().toString()
-//                )!!
                 throw ApiException(response.code(), response.message())
             }
 
             appSettings.setCurrentToken(requireNotNull(response.body()?.token))
+            appSettings.setCurrentIdForUser(requireNotNull(response.body()?.id))
 
         }
         catch (e: IOException) {

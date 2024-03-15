@@ -1,6 +1,5 @@
 package ru.netology.neworknetology.screens.main.tabs.events
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -70,5 +69,17 @@ class EventsViewModel @Inject constructor(
     }
 
     private fun showForbiddenToast() = _showForbiddenToastEvent.publishEvent()
+
+    fun takePartById(event: Event) = viewModelScope.launch {
+        try {
+            if (!event.participatedByMe) {
+                eventRepository.takeParticipantsAtEvent(event.id)
+            } else {
+                eventRepository.deleteTakingParticipants(event.id)
+            }
+        } catch (e: Exception) {
+            _dataState.value = StateModel(error = true, loading = false)
+        }
+    }
 
 }
