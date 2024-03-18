@@ -17,20 +17,20 @@ interface PostApiService {
 
     @GET("/api/posts")
     suspend fun getAllPosts(): Response<List<Post>>
-    @POST("posts")
+    @POST("api/posts")
     suspend fun save(@Body post: Post): Response<Post>
 
-    @POST("posts/{id}/likes")
+    @POST("api/posts/{id}/likes")
     suspend fun likeById(@Path("id") id: Int): Response<Post>
 
-    @DELETE("posts/{id}/likes")
+    @DELETE("api/posts/{id}/likes")
     suspend fun dislikeById(@Path("id") id: Int): Response<Post>
 
-    @DELETE("posts/{id}")
+    @DELETE("api/posts/{id}")
     suspend fun removeById(@Path("id") id: Int): Response<Unit>
 
     @Multipart
-    @POST("media")
+    @POST("api/media")
     suspend fun saveMedia(@Part part: MultipartBody.Part): Response<Media>
 
     @GET("/api/users/{id}")

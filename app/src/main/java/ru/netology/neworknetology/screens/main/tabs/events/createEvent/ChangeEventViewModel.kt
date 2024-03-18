@@ -15,6 +15,8 @@ import ru.netology.neworknetology.model.enums.EventType
 import ru.netology.neworknetology.model.media.MediaModel
 import ru.netology.neworknetology.repository.draft.DraftNewEventRepository
 import ru.netology.neworknetology.screens.main.tabs.events.EventRepository
+import ru.netology.neworknetology.utils.MutableUnitLiveEvent
+import ru.netology.neworknetology.utils.publishEvent
 import ru.netology.neworknetology.utils.share
 import java.io.InputStream
 import java.time.OffsetDateTime
@@ -55,6 +57,9 @@ class ChangeEventViewModel @Inject constructor(
     private val _mediaState = MutableLiveData<MediaModel?>()
     val mediaState: LiveData<MediaModel?> = _mediaState.share()
 
+    private val _navigateUpEvent = MutableUnitLiveEvent()
+    val navigateToUpEvent = _navigateUpEvent.share()
+
     fun changeMedia(uri: Uri?, inputStream: InputStream?, type: AttachmentType?) {
         _mediaState.value = MediaModel(uri, inputStream, type)
     }
@@ -79,6 +84,7 @@ class ChangeEventViewModel @Inject constructor(
                         media.inputStream?.let { eventRepository.saveEventWithAttachment(it,media.type!!, event) }
                     } ?: eventRepository.saveEvent(event)
                     _dataState.value = StateModel()
+                    _navigateUpEvent.publishEvent()
                 } catch (e: Exception) {
                     _dataState.value = StateModel(error = true, loading = false)
                 }

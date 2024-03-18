@@ -48,7 +48,7 @@ class PostsFragment : Fragment(R.layout.fragment_post) {
             activity?.title = getString(R.string.posts_fragment_title)
         }
 
-        binding.add.isVisible = userId == null
+        binding.add.isVisible =  userId == viewModel.getCurrentUserId() || userId == 0
         binding.add.setOnClickListener {
             findTopNavController().navigate(R.id.createPostFragment)
         }

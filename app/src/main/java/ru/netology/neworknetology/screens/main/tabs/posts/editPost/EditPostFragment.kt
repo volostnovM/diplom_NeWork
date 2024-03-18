@@ -28,6 +28,8 @@ import ru.netology.neworknetology.screens.main.tabs.posts.createPost.ChangePostV
 import ru.netology.neworknetology.utils.AndroidUtils
 import ru.netology.neworknetology.utils.AndroidUtils.focusAndShowKeyboard
 import ru.netology.neworknetology.utils.load
+import ru.netology.neworknetology.utils.observeEvent
+
 @AndroidEntryPoint
 class EditPostFragment : Fragment(R.layout.fragment_edit_post) {
     private lateinit var binding: FragmentEditPostBinding
@@ -150,6 +152,7 @@ class EditPostFragment : Fragment(R.layout.fragment_edit_post) {
         }
 
         makeMenu()
+        observeNavigateUpEvent()
 
         return binding.root
     }
@@ -165,7 +168,6 @@ class EditPostFragment : Fragment(R.layout.fragment_edit_post) {
                     R.id.addEventMenu -> {
                         if (binding.editText.text.toString().isNotBlank()) {
                             viewModel.saveEvent(binding.editText.text.toString())
-                            findNavController().navigateUp()
                             true
                         } else {
                             Snackbar.make(
@@ -179,6 +181,10 @@ class EditPostFragment : Fragment(R.layout.fragment_edit_post) {
                     else -> false
                 }
         }, viewLifecycleOwner)
+    }
+
+    private fun observeNavigateUpEvent() = viewModel.navigateToUpEvent.observeEvent(viewLifecycleOwner) {
+        findNavController().navigateUp()
     }
 
     override fun onDestroy() {

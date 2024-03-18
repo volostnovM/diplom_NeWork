@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 import ru.netology.neworknetology.dto.Job
 import ru.netology.neworknetology.model.StateModel
 import ru.netology.neworknetology.model.setting.AppSettings
+import ru.netology.neworknetology.utils.MutableUnitLiveEvent
+import ru.netology.neworknetology.utils.publishEvent
 import ru.netology.neworknetology.utils.share
 import javax.inject.Inject
 
@@ -20,6 +22,9 @@ class JobViewModel @Inject constructor(
 ): ViewModel() {
     private val _dataState = MutableLiveData<StateModel>()
     val dataState: LiveData<StateModel> = _dataState.share()
+
+    private val _navigateUpEvent = MutableUnitLiveEvent()
+    val navigateToUpEvent = _navigateUpEvent.share()
 
 
     val data: LiveData<List<Job>> = jobRepository.data
@@ -59,6 +64,7 @@ class JobViewModel @Inject constructor(
                     link = link,
                 )
             )
+            _navigateUpEvent.publishEvent()
         } catch (e: Exception) {
             _dataState.value = StateModel(error = true, loading = false)
         }

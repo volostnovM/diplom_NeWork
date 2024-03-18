@@ -51,6 +51,10 @@ class PostViewModel @Inject constructor(
         }
     }
 
+    fun getCurrentUserId(): Int {
+        return appSettings.getCurrentIdForUser()
+    }
+
     fun likeById(post: Post) = viewModelScope.launch {
         try {
             if (!post.likedByMe) {

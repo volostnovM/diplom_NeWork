@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.neworknetology.R
 import ru.netology.neworknetology.databinding.FragmentNewJobBinding
 import ru.netology.neworknetology.screens.main.userInfo.job.JobViewModel
+import ru.netology.neworknetology.utils.observeEvent
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
@@ -100,8 +101,6 @@ class CreateJobFragment: Fragment(R.layout.fragment_new_job)  {
                     dateStart.toString(),
                     emptyTime.toString()
                 )
-                findNavController().navigateUp()
-
             } catch (e: Exception) {
                 Toast.makeText(
                     requireContext(),
@@ -131,7 +130,13 @@ class CreateJobFragment: Fragment(R.layout.fragment_new_job)  {
                 .show()
         }
 
+        observeNavigateUpEvent()
+
         return binding.root
+    }
+
+    private fun observeNavigateUpEvent() = viewModel.navigateToUpEvent.observeEvent(viewLifecycleOwner) {
+        findNavController().navigateUp()
     }
 
     private fun updateStateButtonLogin(): Boolean {

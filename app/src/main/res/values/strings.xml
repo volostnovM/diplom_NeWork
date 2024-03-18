@@ -79,7 +79,7 @@
     <string name="select_date">select date</string>
     <string name="enter_dates">enter dates</string>
     <string name="icon_calendar">icon calendar</string>
-    <string name="mm_dd_yyyy">mmddyyyy</string>
+    <string name="mm_dd_yyyy">mm.dd.yyyy</string>
     <string name="end_date">end date</string>
     <string name="ok">ok</string>
 </resources>
